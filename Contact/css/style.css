@@ -1,0 +1,85 @@
+/* start form */
+
+body {
+    
+    background-color: #f1f1f1;
+}
+
+.alert {
+    margin-bottom: 10px; 
+    
+}
+
+h1 {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 900; 
+    font-size: 50px; 
+    letter-spacing: -3px; 
+    color: #757575; 
+
+}
+
+.contact-form {
+    max-width: 450px; /* w 3mlna max 3ashn mnbozsha al responsiv bsa mt3dash al 450px lo shashtk kberr w yb2a mzbota f shasht al phone */ 
+    margin: 20px auto; 
+}
+
+.contact-form .form-group {
+    
+    margin-bottom: 0; 
+    position: relative; /* 3ashn al 3nasra b3d kd motlka aly ho asterisx*/ 
+    
+}
+
+.contact-form input, 
+.contact-form textarea {
+    margin-bottom: 10px; 
+} 
+
+.contact-form textarea {
+    height: 180px !important /* ana bst5dma al !important 3ashn e3ml tnskia ana w tghla tnsek al BS w y3mlha 180px w mlosh d3wa b height BS*/ 
+}
+
+.contact-form input:not([type='submit']) + i { /* ay 7ga m3da btn submit w 3ashn tnsek send-icon  */ 
+    height: 0; 
+    float: left; /* w da 3ashn a5lha tkon bar w 3la al bar w ml7ash height */ 
+    position: relative; /* abd2a a7rkha b2 */ 
+    top : -32px;
+    left: 10px; 
+    color: #999; 
+}
+
+.contact-form .asterisx {
+    float: right;
+    height: 0;
+    font-size: 22px;
+    color: #b90d0d;
+    position: absolute;
+    right: 6px;
+    top: 10px;
+    
+    
+}
+
+.contact-form input {
+    padding-left: 33px; /* w 3ashn eb3da 3n al icon */ 
+}
+
+
+.contact-form .send-icon { /* w da al icon ale bt3ta al btn */ 
+    display: block; /* 3ashn eb2a f satr lw7da */ 
+    position: relative; 
+    top: -32px; 
+    left: 7px; 
+    color: #FFF;
+}
+
+.contact-form .custom-alert {
+    padding: 5px 10px;
+    display: none; /* 3ashn al jq*/ 
+}
+
+
+
+
+/* end form */

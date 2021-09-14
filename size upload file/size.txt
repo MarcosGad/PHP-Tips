@@ -1,0 +1,24 @@
+https://www.experts-exchange.com/questions/28999830/Php-file-upload-error-This-site-can-t-be-reached-The-connection-was-reset.html
+
+https://uk.godaddy.com/help/end-php-processes-16119
+
+https://stackoverflow.com/questions/16140917/how-to-access-the-php-ini-file-in-godaddy-shared-hosting-linux
+
+https://uk.godaddy.com/help/change-php-settings-26379
+
+https://uk.godaddy.com/help/edit-files-in-cpanel-hosting-16314
+
+
+https://www.google.com.eg/search?q=how+to+edit+php.ini+in+godaddy+cpanel&dcr=0&source=lnms&tbm=vid&sa=X&ved=0ahUKEwiYt_LA7rzaAhVCtRQKHXWRALYQ_AUICigB&biw=1366&bih=637
+
+
+file_uploads = On
+post_max_size = 500M
+upload_max_filesize = 500M
+max_execution_time = 500
+memory_limit = 500M
+
+.user.ini
+
+https://www.godaddy.com/help/php-upload-limits-on-shared-hosting-1475
+https://www.godaddy.com/help/what-filename-does-my-php-initialization-file-need-to-use-8913

@@ -1,0 +1,41 @@
+<html>
+<head>
+    <title>push</title>
+    
+    <script src="jquery-3.2.1.min.js"></script>
+    <script src="push.js"></script>
+</head>
+<body>
+
+    <div id="wrapper">
+    <button id="notify-button">click</button>
+    </div>
+    
+    
+    
+    <script>
+    
+        
+            
+    $(window).on("load",function (){ 
+            
+            Push.create("Hello world!", {
+            body: "How's it hangin'?",
+            icon: 'icon.png',
+            timeout: 10000,
+            onClick: function () {
+                window.focus();
+                this.close();
+            }
+        });
+            
+        }); 
+    </script>
+    
+    
+    
+    
+    
+    
+</body>
+</html>

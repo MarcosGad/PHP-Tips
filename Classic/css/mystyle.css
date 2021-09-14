@@ -1,0 +1,468 @@
+/* start my framwork */
+*{
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+body {
+    
+
+    
+}
+.container {
+    width: 1000px; 
+    margin: auto; 
+}
+
+.clearfix {
+    clear: both; 
+}
+
+.special-h{
+    position: relative; /* al hyt7ta b3da hekon f al wad3a al motlka */
+}
+.special-h:after{
+    content:"";
+    display: block; 
+    position: absolute; 
+    top:40px;
+    left:0; 
+    width: 40px; /* kol mkbra al width kol mla 5ta yakbar*/
+    border-bottom: 2px solid #333; 
+}
+
+.separator {
+     border: 1px solid #eee; 
+}
+
+.navbar,  
+.header,
+.services,
+.our-team,
+.testim,
+.our-projects,
+.footer {
+   min-width: 1200px; /* w 7ta ng3la al sit motfa3l */ 
+}
+
+/* end my framwork */ 
+
+/* start navbar */ 
+.navbar{
+     font-size: 20px;
+     height: 0; /* 7ta ykon navbar shfaf */ 
+     color: #fff; 
+     position: relative; /* 3ashn al overlay */
+     z-index: 2; 
+}
+
+.navbar .brand {
+    float: left; 
+    width: 40%; 
+    text-transform: uppercase; 
+    margin-top: 10px; 
+}
+
+.navbar .links {
+    float: left;
+    width: 60%; 
+    margin-top: 25px; 
+}
+
+ul{
+    list-style: none; 
+    padding: 0; 
+    margin: 0; 
+}
+
+.navbar .links li {
+    display: inline-block; 
+    padding: 10px 0; 
+    margin: 0 12px; 
+    border-bottom: 2px solid transparent; 
+}
+ 
+.navbar .links li a {
+    color: #fff; 
+    text-decoration: none; 
+}
+
+
+.navbar .links li.active a , .navbar .links li a:hover {
+    color: #1abc9c;
+}
+
+.navbar .links li.active , .navbar .links li:hover {
+    border-bottom: 2px solid #1abc9c;
+}
+
+/* end navbar */ 
+
+/* start header */ 
+
+.header {
+    background: url(../img/Toronto-mobile-website-design.jpg); 
+    position: relative; /* 3ashn al overlay */ 
+}
+
+.header .overlay {
+    background-color: rgba(0, 0, 0, 0.1); 
+    position: absolute; 
+    top: 0;
+    left: 0; 
+    bottom: 0; 
+    right: 0; 
+    width: 100%;
+    height: 100%; 
+    color: #fff; 
+    z-index: 1; /* twze3a al tbkat */ 
+        
+}
+
+
+.header .brandd {
+    text-align: center; 
+    margin-top: 300px; 
+}
+.header .brandd h2 {
+    height: 0; /* 7ta ykon navbar shfaf */ 
+    font-size: 50px; 
+}
+
+.header .brandd span {
+    color: #1abc9c; 
+}
+
+.header .brandd p {
+    margin-top: 85px; 
+}
+
+/* end header */
+
+/* start our services */
+
+.services {
+    padding: 70px 20px 40px; 
+}
+
+.services h2{
+    margin: 0 0 50px;
+    font-weight: normal; 
+}
+
+.services .item {
+    float: left; /* w tb3an b3da ay float overflow: hidden or .clearfix*/
+    width: 32.333%; /* lazm ya5od width 3ashn e3mla al float*/ 
+    margin-bottom: 20px; 
+}
+
+.services .item i {
+    color: #1abc9c; 
+    float: left; 
+    width: 20%; 
+    margin-right: 5%;
+    margin-top: 10px; 
+}
+
+.services .item .info{
+    float: left; 
+    width: 70%; 
+}
+
+.services .item .info h2{
+     font-weight: normal; 
+     color: #585353; 
+     margin-bottom: 15px; 
+}
+
+.services .item .info p {
+    margin-top: 0px; 
+    color: #888; 
+}
+
+
+
+/* end our services */
+
+/* start our team */ 
+
+.our-team {
+    padding: 40px 20px; 
+}
+
+.our-team h2 {
+    font-weight: normal; 
+}
+
+.our-team .box {
+    float: left; 
+}
+
+.our-team .box:first-child{
+    width: 30%; 
+}
+
+.our-team .box:not(:first-child){
+    width: 16.50%; /* width: 17.50%; w da alt2sam al s7 w lakn 5smn wa7d 3ashn al margin-left: 1%*/ 
+    /*text-align: right; /* w kd 3ashn al img t7za emen */ 
+    margin-left: 1%; 
+    position: relative; /* 3ashn al overlay */ 
+}
+
+.our-team .box:not(:first-child) .overlay {
+    position: absolute; 
+    top: 0; 
+    left: 0;
+    bottom: 0; 
+    right: 0; 
+    width: 100%; 
+    height: 100%; 
+    background-color:rgba(26,188,156,.6);
+    color: #fff; 
+    text-align: center; 
+    line-height: 183px; 
+    font-size: 20px;
+    font-weight: bold; 
+    display: none;
+}
+
+.our-team .box:not(:first-child):hover .overlay {
+    display: block;
+}
+
+
+.our-team .box:not(:first-child) img {
+    width: 100%; 
+}
+
+.our-team .box p {
+    color: #888; 
+    line-height: 1.7; 
+    margin-top: 25px; 
+}
+
+/* start testimoials */ 
+
+.testim {
+    background: url(../img/sliide.jpg); 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height: 400px;
+    position: relative; 
+    text-align: center; 
+    padding: 80px 0; 
+}
+
+.testim .t-overylay {
+    position: absolute; 
+    top: 0; 
+    left: 0;
+    bottom: 0; 
+    right: 0; 
+    width: 100%; 
+    height: 100%; 
+    color: #fff; 
+    background-color: rgba(0,0,0, .7); 
+}
+
+.testim h2{
+    font-size: 40px; 
+    margin: 80px 0 10px; 
+}
+
+.testim q {
+    font-size: 20px; 
+    line-height: 2; 
+    color: #D0D0D0;
+    display: block; 
+    margin-top: 60px; 
+}
+.testim p {
+    font-size: 30px; 
+    color: #1abc9c; 
+    margin-top: 45px; 
+}
+
+.testim .slider > div { /* kol al div ale f slider a5fa */ 
+    display: none; 
+}
+
+.testim .slider .active {
+    display: block; 
+}
+
+/* end our team */ 
+
+/* start projects */
+
+.our-projects {
+    padding: 60px 0; 
+}
+
+.our-projects h2 {
+    font-weight: normal; 
+    
+}
+
+.our-projects ul{
+    margin-top: 40px; 
+}
+.our-projects ul li  {
+    display: inline-block; 
+    border: 2px solid #D4CCCC; 
+    color: #A7A7A7; 
+    padding: 10px; 
+    border-radius: 5px; 
+    margin-right: 7px; 
+}
+ 
+.our-projects ul li.selected{
+    background-color: #1abc9c; 
+    border: 2px solid #1abc9c; 
+    color: #fff; 
+}
+
+.our-projects .gallery {
+    margin-top: 50px; 
+    overflow: hidden; 
+}
+
+.our-projects .gallery .row > div:nth-child(2) { /* w kd 3amlt margin la img ale f al nos shmal w emen */ 
+    margin-right: 1%; 
+    margin-left: 1%; 
+}
+
+.our-projects .gallery .row > div {
+    width: 32.66666%;
+    float: left; 
+    margin-bottom: 12px; 
+    position: relative; 
+}
+
+.our-projects .gallery .row > div .over {
+    position: absolute; 
+    top: 0; 
+    left: 0;
+    bottom: 0; 
+    right: 0; 
+    width: 100%;  
+    height: 100%; 
+    background-color:rgba(26,188,156,.6);/* l3mla al shfafia aktob hex to rgba */ 
+    color: #fff; 
+    text-align: center; 
+    line-height: 309px; /* nfsa ms7at hight al div */ 
+    font-size: 20px;
+    font-weight: bold;
+    display: none; /* 3ashn e5tfa w ezhra lma a3ml hover 3la al sora */ 
+}
+
+.our-projects .gallery .row > div .heart {
+    position: absolute; /* 3ashn a3rfa azbot mkan al 2lba*/ 
+    bottom: 20px; 
+    right: 20px; 
+    color: #fff; 
+    display: none;
+    
+}
+
+.our-projects .gallery .row > div:hover .over, 
+.our-projects .gallery .row > div:hover .heart {
+    display: block; 
+}   
+
+
+.our-projects .gallery .row > div img { /* w hna lky msa7t al img tml2a al div */ 
+    width: 100%; 
+} 
+
+
+/* end projects */
+
+/* start footer */ 
+.footer {
+    background-color: #232323; 
+    color: #6C6C6C; 
+    padding: 40PX 0; 
+    overflow: hidden; 
+}
+
+.footer .col {
+    width: 25%; 
+    float: left; 
+    
+}
+
+.footer .col h2 {
+    color: #fff; 
+    font-weight: normal; 
+    font-size: 18px; 
+    
+}
+
+.footer .col p {
+    margin-bottom: 30px; 
+    line-height: 1.5; 
+}
+
+.footer .col i {
+    display: inline-block; 
+    color: #979797; 
+    border: 1px solid #979797; 
+    width: 40PX; 
+    padding: 10px; 
+}
+ 
+    
+
+.footer .tags span {
+    display: inline-block; 
+    color: #CCC; 
+    border: 1px solid #979797; 
+    padding: 10px; 
+    margin-right: 5px; 
+    margin-bottom: 10px; 
+}
+
+.footer .recent div {
+    overflow: hidden; 
+    margin-bottom: 10px; 
+}
+
+.footer .recent div img {
+    float: left; 
+    margin-right: 10px; 
+}
+
+.footer .recent div h4 {
+    margin: 8px 0; 
+    color: #CCC; 
+    font-weight: normal; 
+}
+    
+.footer .blog ul li {
+    padding: 15px; 
+    border-bottom: 1px solid #979797; 
+    color: #ccc; 
+}
+
+
+.footer .copyright {
+    margin-top: 30px; 
+}
+/* end footer */
+
+
+
+
+
+
+
+
+
+
+
+
+

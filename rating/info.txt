@@ -1,0 +1,10 @@
+Very precise jQuery/Ajax Star Rating Plugin Tutorial
+http://www.tipocode.com/jquery/very-precise-jquery-ajax-star-rating-plugin-tutorial/#11
+https://www.sitepoint.com/10-jquery-rating-plugins/
+https://www.youtube.com/watch?v=fJeyCzHy7Zo
+https://www.jqueryscript.net/tags.php?/Rating/
+https://stackoverflow.com/questions/46637728/how-do-i-create-a-simple-star-rating-with-span-or-ul-li-using-css-and-jquery/46638721.
+https://www.udemy.com/star-rating-script-with-php-mysql-and-javascript/
+https://www.phpjabbers.com/free-cookie-policy-script/
+http://megarush.net/5-star-rating-system-with-php-mysql-jquery-and-ajax/
+https://www.udemy.com/shopify-power/

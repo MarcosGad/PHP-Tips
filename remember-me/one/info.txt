@@ -1,0 +1,2 @@
+https://phppot.com/php/php-login-script-with-remember-me/
+https://stackoverflow.com/questions/2839988/destroy-or-unset-session-when-user-close-the-browser-without-clicking-on-logout

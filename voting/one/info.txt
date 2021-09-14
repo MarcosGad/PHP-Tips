@@ -1,0 +1,166 @@
+http://codewithawa.com/posts/like-and-unlike-system-using-php-and-mysql-database
+
+
+posts:
+
+id  - int(11)
+text - text
+likes - int(11)
+users:
+
+id - int(11)
+name - varchar(255)
+likes:
+
+id - int(11)
+userid - int(11)
+postid - int(11)
+First off, I'd like to say that these tables are way too basic for any big application. I have only considered the very basic fields that will be just enough to demonstrate the whole like/unlike dynamic. Feel free to modify it to suit your needs.
+
+One last thing on the posts table in the database, insert some dummy values into the posts table. Just basic texts. Insert as many records as you like. These records will, later on, be queried and displayed on the web page where they can be liked, unliked.
+
+Now the code.
+
+Create an index.php file in the root of your application. Download jquery and place it also in the root of your application. Place this code in the index.php file:
+
+index.php
+
+<?php 
+	// connect to the database
+	$con = mysqli_connect('localhost', 'root', '', 'like');
+
+	if (isset($_POST['liked'])) {
+		$postid = $_POST['postid'];
+		$result = mysqli_query($con, "SELECT * FROM posts WHERE id=$postid");
+		$row = mysqli_fetch_array($result);
+		$n = $row['likes'];
+
+		mysqli_query($con, "INSERT INTO likes (userid, postid) VALUES (1, $postid)");
+		mysqli_query($con, "UPDATE posts SET likes=$n+1 WHERE id=$postid");
+
+		echo $n+1;
+		exit();
+	}
+	if (isset($_POST['unliked'])) {
+		$postid = $_POST['postid'];
+		$result = mysqli_query($con, "SELECT * FROM posts WHERE id=$postid");
+		$row = mysqli_fetch_array($result);
+		$n = $row['likes'];
+
+		mysqli_query($con, "DELETE FROM likes WHERE postid=$postid AND userid=1");
+		mysqli_query($con, "UPDATE posts SET likes=$n-1 WHERE id=$postid");
+		
+		echo $n-1;
+		exit();
+	}
+
+	// Retrieve posts from the database
+	$posts = mysqli_query($con, "SELECT * FROM posts");
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Like and unlike system</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+	<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+	<!-- display posts gotten from the database  -->
+		<?php while ($row = mysqli_fetch_array($posts)) { ?>
+
+			<div class="post">
+				<?php echo $row['text']; ?>
+
+				<div style="padding: 2px; margin-top: 5px;">
+				<?php 
+					// determine if user has already liked this post
+					$results = mysqli_query($con, "SELECT * FROM likes WHERE userid=1 AND postid=".$row['id']."");
+
+					if (mysqli_num_rows($results) == 1 ): ?>
+						<!-- user already likes post -->
+						<span class="unlike fa fa-thumbs-up" data-id="<?php echo $row['id']; ?>"></span> 
+						<span class="like hide fa fa-thumbs-o-up" data-id="<?php echo $row['id']; ?>"></span> 
+					<?php else: ?>
+						<!-- user has not yet liked post -->
+						<span class="like fa fa-thumbs-o-up" data-id="<?php echo $row['id']; ?>"></span> 
+						<span class="unlike hide fa fa-thumbs-up" data-id="<?php echo $row['id']; ?>"></span> 
+					<?php endif ?>
+
+					<span class="likes_count"><?php echo $row['likes']; ?> likes</span>
+				</div>
+			</div>
+
+		<?php } ?>
+
+
+<!-- Add Jquery to page -->
+<script src="jquery.min.js"></script>
+<script>
+	$(document).ready(function(){
+		// when the user clicks on like
+		$('.like').on('click', function(){
+			var postid = $(this).data('id');
+			    $post = $(this);
+
+			$.ajax({
+				url: 'index.php',
+				type: 'post',
+				data: {
+					'liked': 1,
+					'postid': postid
+				},
+				success: function(response){
+					$post.parent().find('span.likes_count').text(response + " likes");
+					$post.addClass('hide');
+					$post.siblings().removeClass('hide');
+				}
+			});
+		});
+
+		// when the user clicks on unlike
+		$('.unlike').on('click', function(){
+			var postid = $(this).data('id');
+		    $post = $(this);
+
+			$.ajax({
+				url: 'index.php',
+				type: 'post',
+				data: {
+					'unliked': 1,
+					'postid': postid
+				},
+				success: function(response){
+					$post.parent().find('span.likes_count').text(response + " likes");
+					$post.addClass('hide');
+					$post.siblings().removeClass('hide');
+				}
+			});
+		});
+	});
+</script>
+</body>
+</html>
+Notice that we've included Jquery and font-awesome in this application. For both of them, you can download the files and place them in the root of your application. Or you can just link them to a CDN like I did with the font-awesome.
+
+There is also the styles file we can't leave out. Create a styles.css file in the root of your application and add the following CSS code in it:
+
+body {
+	padding-top: 100px;
+}
+.post {
+	width: 30%;
+	margin: 10px auto;
+	border: 1px solid #cbcbcb;
+	padding: 5px 10px 0px 10px;
+}
+.like, .unlike, .likes_count {
+	color: blue;
+}
+.hide {
+	display: none;
+}
+.fa-thumbs-up, .fa-thumbs-o-up {
+	transform: rotateY(-180deg);
+	font-size: 1.3em;
+}

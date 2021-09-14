@@ -1,0 +1,7 @@
+#posts-container .post .action {
+    color: #bbb;
+    cursor: pointer;
+}
+#posts-container .post .action:hover {
+    color: #4e4e4e;
+}

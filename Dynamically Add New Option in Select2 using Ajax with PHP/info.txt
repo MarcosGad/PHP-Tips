@@ -1,0 +1,1 @@
+https://www.webslesson.info/2020/11/dynamically-add-item-to-jquery-select2-control-using-ajax-with-php.html

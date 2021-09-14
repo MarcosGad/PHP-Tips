@@ -1,0 +1,105 @@
+https://www.webslesson.info/2016/09/facebook-style-php-like-button-using.html
+
+
+
+--  
+ -- Table structure for table `articles`  
+ --  
+ CREATE TABLE IF NOT EXISTS `articles` (  
+  `id` int(11) NOT NULL AUTO_INCREMENT,  
+  `title` text,  
+  PRIMARY KEY (`id`)  
+ ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;  
+ --  
+ -- Dumping data for table `articles`  
+ --  
+ INSERT INTO `articles` (`id`, `title`) VALUES  
+ (1, 'Ajax Jquery Drag and Drop Shopping Cart using PHP Mysql'),  
+ (2, 'Make PHP Hashtag system by using Regular Expression'),  
+ (3, 'Ajax Jquery Column Sort with PHP & MySql'),  
+ (4, 'Drag and drop Upload multiples File By Ajax JQuery PHP');  
+ -- --------------------------------------------------------  
+ --  
+ -- Table structure for table `article_likes`  
+ --  
+ CREATE TABLE IF NOT EXISTS `article_likes` (  
+  `id` int(11) NOT NULL AUTO_INCREMENT,  
+  `user` int(11) NOT NULL,  
+  `article` int(11) NOT NULL,  
+  PRIMARY KEY (`id`)  
+ ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=46 ;  
+ --  
+ -- Dumping data for table `article_likes`  
+ --  
+ -- --------------------------------------------------------  
+ --  
+ -- Table structure for table `user`  
+ --  
+ CREATE TABLE IF NOT EXISTS `user` (  
+  `id` int(11) NOT NULL AUTO_INCREMENT,  
+  `name` text NOT NULL,  
+  PRIMARY KEY (`id`)  
+ ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;  
+ --  
+ -- Dumping data for table `user`  
+ --  
+ INSERT INTO `user` (`id`, `name`) VALUES  
+ (1, 'john'),  
+ (2, 'jack');  
+
+index.php
+
+ <?php  
+ //index.php  
+ session_start();  
+ $_SESSION['user_id'] = (int)2;  
+ $connect = mysqli_connect("localhost", "root", "", "like_button");  
+ $query = "  
+      SELECT articles.id, articles.title,  
+      COUNT(article_likes.id) as likes,  
+      GROUP_CONCAT(user.name separator '|') as liked  
+      FROM  
+      articles  
+      LEFT JOIN article_likes  
+      ON article_likes.article = articles.id  
+      LEFT JOIN user  
+      ON article_likes.user = user.id  
+      GROUP BY articles.id  
+ ";  
+ $result = mysqli_query($connect, $query);  
+ while($row = mysqli_fetch_array($result))  
+ {  
+      echo '<h3>'.$row["title"].'</h3>';  
+      echo '<a href="index.php?type=article&id='.$row["id"].'">Like</a>';  
+      echo '<p>'.$row["likes"].' People like this</p>';  
+      if(count($row["liked"]))  
+      {  
+           $liked = explode("|", $row["liked"]);  
+           echo '<ul>';  
+           foreach($liked as $like)  
+           {  
+                echo '<li>'.$like.'</li>';  
+           }  
+           echo '</ul>';  
+      }  
+ }  
+ if(isset($_GET["type"], $_GET["id"]))  
+ {  
+      $type = $_GET["type"];  
+      $id = (int)$_GET["id"];  
+      if($type == "article")  
+      {  
+           $query = "  
+           INSERT INTO article_likes (user, article)  
+           SELECT {$_SESSION['user_id']}, {$id} FROM articles   
+                WHERE EXISTS(  
+                     SELECT id FROM articles WHERE id = {$id}) AND  
+                     NOT EXISTS(  
+                          SELECT id FROM article_likes WHERE user = {$_SESSION['user_id']} AND article = {$id})  
+                          LIMIT 1  
+           ";  
+           mysqli_query($connect, $query);  
+           header("location:index.php");  
+      }  
+ }  
+ ?>  

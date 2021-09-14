@@ -1,0 +1,6 @@
+
+https://github.com/PHPMailer/PHPMailer
+
+https://stackoverflow.com/questions/4532486/failed-to-connect-to-mailserver-at-localhost-port-25
+
+http://cooontact.byethost15.com/index.php?i=1
